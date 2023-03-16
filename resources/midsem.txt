@@ -1,0 +1,42 @@
+Differential privacy is different from existing privacy techniques in several ways:
+
+Statistical guarantees are provided by mathematical formulas and ensures an individual's privacy. This is independent of any other data
+available to the attacker. This is ensured by the amount of noise that is added to the data.
+
+Differential privacy balances privacy and data utility which is basically accuracy. By inverting the noise function one can use the remaining data for analysis, while still protecting the privacy of individuals. This is an advantage over data masking.
+
+This technique can be applied to a wide range of data analysis tasks, including simple statistical queries, machine learning algos, and data mining applications.
+
+Moreover, this enables us to avoid malicious attacks, including re-identification and linkage attacks. This is because the infused noise makes it difficult for an attacker to link an individual's data across different datasets.
+
+Differential Privacy is transparent and auditable technique. The amount of noise htat is added to the data can be adjusted based on the level of privacy required, and the amount of noise can be audited to ensure that the privacy guarantees are being met.
+
+
+
+
+
+So are we just an elaborate team of data analysts? Well, no.
+
+It is challenging to describe the team's work as the field itself
+is complex and technical in nature. However, after reading through 
+multiple research papers we have successfully decoded 'Opportunity Insights'
+measure implemented in protecting privacy when disclosing teen birth rates
+of children in the neighbourhoods of the Black Community.
+
+We aim to provide techniques from the differential privacy literature
+which can be a useful approach for social scientists and government
+agencies seeking to realease data based on small cells - one that minimizes
+privacy risks while reataining the benefits of such data for scientific
+research and policy making.
+
+So how exactly are we different? Our team has taken up the challenge of 
+introducing adaptive privacy under Differential Privacy. We are currently
+targeting privacy-preserving location-based services such as location
+based advertising and traffic monitoring. These data points can be highly
+sensitive as they reaveal a user's movements over time. We have proposed
+this to provide stronger privacy guarantees for sensitive locations,
+such as user's home or workplace.
+
+This was inspired by Facebook's own method of releasing 'Movement Range Maps'
+quantifying the changes in mobility of Facebook users during the COVID-19
+pandemic. As well as Google's Community Mobility Reports.
