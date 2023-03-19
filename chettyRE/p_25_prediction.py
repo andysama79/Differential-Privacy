@@ -1,3 +1,4 @@
+#%%
 import pandas as pd
 import numpy as np
 import statsmodels.api as sm
@@ -51,6 +52,10 @@ data["N_g_LS_g"] = data["N_g"] * data["LS_g"]
 data_grouped = data.groupby("cell").agg({"theta_g": "first", "SE_theta_g": "first", "N_g": "first", "N_g_LS_g": "first"})
 data_grouped["chi"] = data_grouped["N_g_LS_g"].max()
 data_grouped = data_grouped.drop(columns=["N_g_LS_g"])
+
+#%%
+data.head()
+#%%
 
 # Loop over epsilon
 np.random.seed(419)

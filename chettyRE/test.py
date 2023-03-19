@@ -1,62 +1,72 @@
+#%% imports
 import pandas as pd
 import numpy as np
-from scipy.stats import norm, laplace
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
 
-# 1. Load data
-data = pd.read_stata("private_data_by_cells.dta")
+#%% Load the dataset 
+df = pd.read_stata("private_data_by_cells.dta")
 
-# 2. Set distribution of omega (see Step 4 of algorithm) from laplace or normal
+# Define a local macro "omega_dist"
 omega_dist = "normal"
 
-# 3. Calculate Local Sensitivity
-# Generate variables to fill in with key parameters in each cell g:
-data["theta_g"] = np.nan  # estimate of interest
-data["SE_theta_g"] = np.nan  # SE of estimate of interest
-data["theta_g_d"] = np.nan  # estimate obtained when adding one observation
-data["LS_g"] = np.nan  # local sensitivity
+df["theta_g"] = np.nan
+df["SE_theta_g"] = np.nan
+df["theta_g_d"] = np.nan
+df["LS_g"] = np.nan
 
-cells = data["cell"].unique()  # save list of cells
+cells = np.unique(df["cell"])
 
-# Compute true statistic, SE, and local sensitivity for each cell
-for g in cells:
-    # Compute true statistic
-    reg = data.query(f"cell == {g}").loc[:, ["kid_rank", "parent_rank"]].values
-    X = np.column_stack((reg[:, 1], np.ones_like(reg[:, 0])))
-    y = reg[:, 0]
-    b = np.linalg.inv(X.T @ X) @ X.T @ y
+#%% Loop through each cell in "cells"
+for cell in cells:
+    # Subset the data for the current cell
+    cell_data = df[df["cell"] == cell]
+    
+    # Run a regression of "kid_rank" on "parent_rank"
+    X = sm.add_constant(cell_data["parent_rank"])
+    y = cell_data["kid_rank"]
+    model = sm.OLS(y, X)
+    results = model.fit()
+    
+    # Replace "theta_g" and "SE_theta_g" with the coefficient and standard error of "parent_rank", respectively
+    df.loc[df["cell"] == cell, "theta_g"] = results.params[1]
+    df.loc[df["cell"] == cell, "SE_theta_g"] = results.bse[1]
+    
+    # Add one observation to the current cell and update "theta_g_d" with the new coefficient obtained from running the regression on the expanded cell
+    cell_data_expanded = cell_data.append(cell_data.iloc[0])
+    X_expanded = sm.add_constant(cell_data_expanded["parent_rank"])
+    y_expanded = cell_data_expanded["kid_rank"]
+    model_expanded = sm.OLS(y_expanded, X_expanded)
+    results_expanded = model_expanded.fit()
+    df.loc[df["cell"] == cell, "theta_g_d"] = results_expanded.params[1]
+    
+    # Calculate the local sensitivity of the estimate
+    perturbations = [("kid_rank", 1, "parent_rank", -1), ("kid_rank", -1, "parent_rank", 1), ("kid_rank", 1, "parent_rank", 1), ("kid_rank", -1, "parent_rank", -1)]
+    max_diff = 0
+    for perturbation in perturbations:
+        X_perturb = X.copy()
+        y_perturb = y.copy()
+        X_perturb[perturbation[0]] += perturbation[1]
+        y_perturb[perturbation[0]] += perturbation[1]
+        X_perturb[perturbation[2]] += perturbation[3]
+        y_perturb[perturbation[2]] += perturbation[3]
+        model_perturb = sm.OLS(y_perturb, X_perturb)
+        results_perturb = model_perturb.fit()
+        diff = abs(results_perturb.params[1] - results.params[1])
+        if diff > max_diff:
+            max_diff = diff
+    df.loc[df["cell"] == cell, "LS_g"] = max_diff
+    
+    # Drop the additional observation added in step c
+    df.drop(df.tail(1).index, inplace=True)
 
-    # Save statistic and SE
-    data.loc[data["cell"] == g, "theta_g"] = b[0] * 0.25 + b[1]
-    data.loc[data["cell"] == g, "SE_theta_g"] = np.sqrt(np.sum((y - X @ b) ** 2) / (reg.shape[0] - 2))
+# Group the dataset by cell and create two new variables
+df_grouped = df.groupby('cell').agg(N_g=('kid_rank', 'count'))
+df_grouped['N_g_LS_g'] = df_grouped['N_g'] * df_grouped['LS_g']
 
-    # Compute Local Sensitivity (LS) for each cell
-    # Add one additional observation in the cell:
-    additional_obs = reg.shape[0] + 1
-    data.loc[additional_obs] = [g, 0, 0, 0, 0]
+# Calculate chi
+chi = df_grouped['N_g_LS_g'].max()
 
-    # loop over 4 corners of the rank-rank space (0,0), (0,1), (1,0), (1,1)
-    for i in range(4):
-        data.loc[additional_obs, "parent_rank"] = i // 2
-        data.loc[additional_obs, "kid_rank"] = i % 2
-        reg = data.query(f"cell == {g}").loc[:, ["kid_rank", "parent_rank"]].values
-        X = np.column_stack((reg[:, 1], np.ones_like(reg[:, 0])))
-        y = reg[:, 0]
-        b_d = np.linalg.inv(X.T @ X) @ X.T @ y
-        data.loc[data["cell"] == g, "theta_g_d"] = b_d[0] * 0.25 + b_d[1]
-
-        # compute LS as the max absolute difference between theta_g_d and theta_g
-        ls = np.max(np.abs(data.loc[data["cell"] == g, "theta_g_d"] - data.loc[data["cell"] == g, "theta_g"]))
-        data.loc[data["cell"] == g, "LS_g"] = ls
-
-    data.drop(additional_obs, inplace=True)
-
-# 4. Compute Maximum Observed Sensitivity (chi)
-# compute number of observations per cell
-n_g = data.groupby("cell").size().reset_index(name="N_g")
-data = pd.merge(data, n_g, on="cell")
-
-# compute N_g * LS_g
-data["N_g_LS_g"] = data["N_g"] * data["LS_g"]
-
-# Find its max
-chi = data["N_g_LS_g"].max()
+#%%
+df.columns
+# %%
