@@ -1,0 +1,37 @@
+Sl.No,City Name,Ward No,Name ,Latitude,Longitude,Capacity in MLD,Location,Level of Treatment,Types of process for treating sewage,O&M / Execution Division ,STP commissioned in year,Inflow MLD 
+1,Bangalore,150,K&C valley ,12.5627,77.3925,218,Belur Nagasandra (near Challaghatta),Secondary,Activated Sludge Process (ASP),EE (STP) Challaghatta Valley,1970,186.8
+2,Bangalore,150,K&C valley ,12.5627,77.3925,30,Belur Nagasandra (near Challaghatta),Secondary,Activated Sludge Process (ASP),EE (STP) Challaghatta Valley,1970,32.4
+3,Bangalore,150,K&C Valley,12.5627,77.3925,60,Belur Nagasandra (near Challaghatta),Secondary,ASP with power generation,EE (STP) Challaghatta Valley,2018,60.72
+4,Bangalore,150,K&C Valley ,12.5627,77.3925,150,B.Nagasandra ,Secondary,Secondary -Activated Sludge Process (ASP),EE(STP) Challaghatta Valley,,111.45
+5,Bangalore,143,Lalbagh ,12.5638,77.037,1.5,Lalbagh kere,Tertiary,Activated aeration + plate settlers + UV disinfection,EE (STP) Challaghatta Valley,2005,1.51
+6,Bangalore,110,Cubbon Park,12.5815,77.3528,4,Cubbon Park (upgraded),Tertiary,Membrane Bio Reactor,EE (STP) Challaghatta Valley,2005/2018,0.768
+7,Bangalore,150,Bellandur Amani kere,12.9398,77.7166,90,Vartur kere,Secondary,Activated Sludge Process (ASP),EE (STP) Koramngala Valley,2018,94.7
+8,Bangalore,150,Kadabeesanahalli Ph-I,12.9475,77.6981,50,Marathalli Outer Ring Road,Secondary,Extended Aeration,EE (STP) Koramngala Valley,2005,42.94
+9,Bangalore,NA,Kadugodi ,12.9894,77.7652,6,Kadugodi ,Secondary,Sequential Batch Reactor,EE (STP) Koramngala Valley,2018,3.57
+10,Bangalore,90,Halasuru,12.597,77.3721,2,Halasuru Lake,Secondary,Sequential Batch Reactor,EE (STP) Koramngala Valley,2018,1.97
+11,Bangalore,184,Sarakki ,12.8957,77.5746,5,Sarakki kere,Secondary,Sequential Batch Reactor,EE(STP) Koramangala Valley ,2019,3.29
+12,Bangalore,172,Agaram ,12.9261,77.6438,35,Agara Ring Road,Secondary,Sequential Batch Reactor,EE(STP) Koramangala Valley ,2020,33.8
+13,Bangalore,192,Hulimavu ,12.8721,77.6054,10,Hulimavu kere,Secondary,Sequential Batch Reactor,EE(STP) Koramangala Valley ,2020,7.49
+14,Bangalore,192,Chikkabegur,12.8721,77.6054,5,Near Chikkabeguru kere,Secondary,Sequential Batch Reactor,EE(STP) Koramangala Valley ,2020,3.57
+15,Bangalore,52,K.R.Puram Ph-II,13.1075,77.4137,20,Tambuchetti palya Road,Secondary,Sequential Batch Reactor,EE(STP) Challaghatta Valley,2020,16.13
+16,Bangalore,52,K.R.Puram Ph-I,13.1075,77.4137,20,Tambuchetti playa Road,Secondary,UASB + Extended Aeration,EE (STP) Challaghatta Valley,2005,16.21
+17,Bangalore,53,Yelemallappa Chetti kere,13.117,77.4311,15,Yelemallappa Chetti kere,Secondary,Sequential Batch Reactor,EE (STP) Challaghatta Valley,2018,14.66
+18,Bangalore,25,Rajacanal - Ph-II,13.046082,77.646433,40,Geddalahalli near Hebbal,Secondary,Extended Aeration,EE (STP) Hebbal Valley,2018,24.87
+19,Bangalore,7,Hebbal ,13.28816,77.3549,100,Nagavara kere ,Secondary,Sequential Batch Reactor,EE(STP) Hebbal Valley,,78.52
+20,Bangalore,1,Jakkur ,13.054,77.362,15,Jakkur kere,Secondary,Upflow Aerobic Sludge Blanket (UASB) + Extended Aeration,EE (STP) Hebbal Valley,2018,15.34
+21,Bangalore,4,Yelahanka Ph-I,13.052,77.0354,10,Allalasandra kere,Tertiary,Activated sludge Process (ASP) + filtration + Chlorination,EE (STP) Hebbal Valley,2003,10.21
+22,Bangalore,25,Rajacanal - Ph-I,13.046082,77.646433,40,Geddalahalli near Hebbal,Secondary,Sequential Batch Reactor,EE (STP) Hebbal Valley,2004,42.96
+23,Bangalore,NA,Hennur,NA,NA,1,Hennur lake,Secondary,Soil Bio Technology,EE(STP) Hebbal Valley,,0.3
+24,Bangalore,25,Horamavu  Agara,13.0444,77.6629,20,In between Kalkere and Horamavu Agara kere,Secondary,Sequential Batch Reactor,EE (STP) Hebbal Valley,2018,18.69
+25,Bangalore,29,Nagasandra Ph-I,13.0232,77.2929,20,Near Madavara kere (near Tumkur Road),Secondary,Extended Aeration,EE (STP) Arkavathy Valley,2005,10.2
+26,Bangalore,72,Mallathahalli,12.5804,77.29,5,Mallathahalli kere,Secondary,Sequential Batch Reactor,EE (STP) Arkavathy Valley,2011,3.76
+27,Bangalore,29,Nagasandra Ph-II,13.0232,77.2929,20,Near Madavara kere (near Tumkur Road),Secondary,Sequential Batch Reactor,EE (STP) Arkavathy Valley,2018,13.48
+28,Bangalore,Gram panchayat,Chikkabanavara ,13.0457,77.3047,5,Chikkabanavara kere,Secondary,Sequential Batch Reactor,EE (STP) Arkavathy Valley,2018,4.97
+29,Bangalore,198,Mailasandra Ph-I,12.9192,77.4941,75,Mailasandra ,Secondary,Extended Aeration,EE (STP) Vrishabhavathi Valley,2005,64.9
+30,Bangalore,160,V.Valley ,12.561,77.6192,180,Mysore  Road,Secondary,Two stage high rate trickling process,EE (STP) Vrishabhavathi Valley,2004,83
+31,Bangalore,155,Kempambudhi ,12.9558,77.312,1,N.R.Colony,Secondary,Extended Aeration,EE (STP) Vrishabhavathi Valley,2002,0.97
+32,Bangalore,130,Doddabele ,12.8982,77.4779,20,Doddabele ,Secondary,Sequential Batch Reactor,EE (STP) Vrishabhavathi Valley,2018,19.37
+33,Bangalore,130,Kengeri,12.9162,77.4897,60,Near Kengeri bus stand ,Secondary,Secondary-Activated Sludge Process,EE (STP) Vrishabhavathi Valley,2018,34.29
+34,Bangalore,130,Doddabele ,12.8982,77.4779,40,Doddabele,Secondary,Sequential Batch Reactor,EE(STP) Vrishabhavathi Valley,2019,40.46
+35,Bangalore,160,V.Valley ,12.5607,77.6192,150,Mysore Road,Secondary,Activated Sludge Process (ASP),EE(STP) Vrishabhavathi Valley,,
+,,,Total,,,1523.5,,,,,,1001.598
